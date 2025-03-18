@@ -14,12 +14,12 @@ spec:
   - protocol: TCP
     port: 80 # service port
     targetPort: 80
-    nodeport: 30007
+    nodePort: 30007
 ---
 kind: Pod
 apiVersion: v1
 metadata:
-  name: backend-ib
+  name: backend-lb
   labels:
     project: expense
     component: backend
