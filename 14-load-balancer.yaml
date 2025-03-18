@@ -1,15 +1,15 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: nginx-np
+  name: nginx-lb
 spec:
-  type: NodePort
+  type: LoadBalancer
   selector: # labels are used as selectors
     project: expense
     component: backend
     environment: dev
     version: "1.0.0"
-    demo: np
+    demo: lb
   ports:
   - protocol: TCP
     port: 80 # service port
@@ -19,13 +19,13 @@ spec:
 kind: Pod
 apiVersion: v1
 metadata:
-  name: backend-np
+  name: backend-ib
   labels:
     project: expense
     component: backend
     environment: dev
     version: "1.0.0"
-    demo: np
+    demo: lb
 spec:
   containers:
   - name: nginx
